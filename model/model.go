@@ -3,6 +3,6 @@ package model
 type Array struct{
 	Array []int
 	Length int
-	Time float64
+	Time string
 	Swapped int
 }

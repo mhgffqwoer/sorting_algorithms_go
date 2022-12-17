@@ -7,6 +7,7 @@ import (
 
 	"github.com/mhgffqwoer/sorting_algorithms_go/model"
     "github.com/mhgffqwoer/sorting_algorithms_go/pkg/generator"
+    "github.com/mhgffqwoer/sorting_algorithms_go/pkg/algorithms"
 	"github.com/spf13/cobra"
 )
 
@@ -26,32 +27,32 @@ var bubbleCmd = &cobra.Command{
         a := model.Array{
             Array: []int{},
             Length: length,
-            Time: 0.0,
+            Time: "",
             Swapped: 0,
         }
 
         switch {
         case command=="random":
             generator.Random(&a)
-            fmt.Print(a.Array)
             break
         case command=="reverse":
             generator.Reverse(&a)
-            fmt.Print(a.Array)
             break
         case command=="direct":
             generator.Direct(&a)
-            fmt.Print(a.Array)
             break
         default:
             log.Fatal()
         }
 
+
+        algorithms.Bubble(&a)
+
+        fmt.Println(a.Time,a.Swapped)
     },
 }
 
 func init() {
     bubbleCmd.Flags().StringVarP(&command,"command","c","random","random/reverse/direct")
-    
     rootCmd.AddCommand(bubbleCmd)
 }
