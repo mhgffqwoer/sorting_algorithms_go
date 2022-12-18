@@ -14,7 +14,6 @@ import (
 var command string
 var bubbleCmd = &cobra.Command{
     Use:   "bubble",
-    Aliases: []string{"bubble"},
     Short:  "Bubble sort",
     Args:  cobra.ExactArgs(1),
     Run: func(cmd *cobra.Command, args []string) {
