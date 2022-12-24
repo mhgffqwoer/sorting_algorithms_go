@@ -1,4 +1,4 @@
-package sorting
+package sortingCmd
 
 import (
 	"fmt"
@@ -6,15 +6,15 @@ import (
 	"strconv"
 
 	"github.com/mhgffqwoer/sorting_algorithms_go/model"
-	"github.com/mhgffqwoer/sorting_algorithms_go/pkg/algorithms"
-	"github.com/mhgffqwoer/sorting_algorithms_go/pkg/generator"
+    "github.com/mhgffqwoer/sorting_algorithms_go/pkg/generator"
+    "github.com/mhgffqwoer/sorting_algorithms_go/pkg/algorithms"
 	"github.com/spf13/cobra"
 )
 
-var commandSelect string
-var selectionCmd = &cobra.Command{
-	Use:   "selection",
-    Short:  "Selection sort",
+var commandBubble string
+var bubbleCmd = &cobra.Command{
+    Use:   "bubble",
+    Short:  "Bubble sort",
     Args:  cobra.ExactArgs(1),
     Run: func(cmd *cobra.Command, args []string) {
 
@@ -31,13 +31,13 @@ var selectionCmd = &cobra.Command{
         }
 
         switch {
-        case commandSelect=="random":
+        case commandBubble=="random":
             generator.Random(&a)
             break
-        case commandSelect=="reverse":
+        case commandBubble=="reverse":
             generator.Reverse(&a)
             break
-        case commandSelect=="direct":
+        case commandBubble=="direct":
             generator.Direct(&a)
             break
         default:
@@ -45,13 +45,13 @@ var selectionCmd = &cobra.Command{
         }
 
 
-        algorithms.Selection(&a)
+        algorithms.Bubble(&a)
 
         fmt.Println(a.Time,a.Swapped)
     },
 }
 
 func init() {
-    selectionCmd.Flags().StringVarP(&commandSelect,"command","c","random","random/reverse/direct")
-    rootCmd.AddCommand(selectionCmd)
+    bubbleCmd.Flags().StringVarP(&commandBubble,"command","c","random","random/reverse/direct")
+    rootCmd.AddCommand(bubbleCmd)
 }
