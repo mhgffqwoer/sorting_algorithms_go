@@ -47,7 +47,6 @@ var selectionCmd = &cobra.Command{
 
         algorithms.Selection(&a)
 
-		fmt.Println(a.Array)
         fmt.Println(a.Time,a.Swapped)
     },
 }
