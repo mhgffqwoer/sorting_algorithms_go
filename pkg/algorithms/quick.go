@@ -6,17 +6,20 @@ import (
 	"github.com/mhgffqwoer/sorting_algorithms_go/model"
 )
 
-func quick(ar []int) int{
+func quick(ar []int, sw *int){
 	if len(ar) <= 1 {
-		return 1
+		return
 	}
 
-	split := partition(ar)
+	split,sw1 := partition(ar, 0 )
+    *sw += sw1
 
-	return quick(ar[split:])+quick(ar[:split])
+
+	quick(ar[split:],sw)
+    quick(ar[:split],sw)
 }
 
-func partition(a []int) int {
+func partition(a []int, sw int) (int, int){
 	pivot := a[len(a)/2]
 
 	left := 0
@@ -32,9 +35,10 @@ func partition(a []int) int {
             left++
         }
 		if left >= right {
-			return right
+			return right, sw
 		}
 
+        sw+=1
 		a[left], a[right] = a[right], a[left]
 	}
 }
@@ -42,7 +46,7 @@ func partition(a []int) int {
 func Testimony_quick(a *model.Array){
 	start := time.Now()
 
-	a.Swapped = quick(a.Array)
+	quick(a.Array, &a.Swapped)
 
 	duration := time.Since(start)
 	a.Time = duration.String()
