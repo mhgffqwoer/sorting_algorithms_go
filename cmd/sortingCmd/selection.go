@@ -42,9 +42,15 @@ var selectionCmd = &cobra.Command{
         }
 
 
-        algorithms.Selection(&a)
+        if a.Length<=20{
+            fmt.Printf("start array: %v\n",a.Array)
+            algorithms.Selection(&a)
+            fmt.Printf("finish array: %v\n",a.Array)
+        }else{
+            algorithms.Selection(&a)
+        }
 
-        fmt.Println(a.Time,a.Swapped)
+        fmt.Printf("Time: %v\nSwapped: %v\n",a.Time,a.Swapped)
     },
 }
 

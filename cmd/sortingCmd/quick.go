@@ -42,9 +42,15 @@ var quickCmd = &cobra.Command{
         }
 
 
-        algorithms.Testimony_quick(&a)
+        if a.Length<=20{
+            fmt.Printf("start array: %v\n",a.Array)
+            algorithms.Testimony_quick(&a)
+            fmt.Printf("finish array: %v\n",a.Array)
+        }else{
+            algorithms.Testimony_quick(&a)
+        }
 
-        fmt.Println(a.Time,a.Swapped)
+        fmt.Printf("Time: %v\nSwapped: %v\n",a.Time,a.Swapped)
     },
 }
 
