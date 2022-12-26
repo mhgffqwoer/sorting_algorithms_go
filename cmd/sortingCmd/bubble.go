@@ -33,13 +33,10 @@ var bubbleCmd = &cobra.Command{
         switch {
         case commandBubble=="random":
             generator.Random(&a)
-            break
         case commandBubble=="reverse":
             generator.Reverse(&a)
-            break
         case commandBubble=="direct":
             generator.Direct(&a)
-            break
         default:
             log.Fatal()
         }

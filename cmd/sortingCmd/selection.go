@@ -33,13 +33,10 @@ var selectionCmd = &cobra.Command{
         switch {
         case commandSelect=="random":
             generator.Random(&a)
-            break
         case commandSelect=="reverse":
             generator.Reverse(&a)
-            break
         case commandSelect=="direct":
             generator.Direct(&a)
-            break
         default:
             log.Fatal()
         }
